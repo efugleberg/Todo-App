@@ -1,17 +1,18 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class AddTodo extends Component {
   state = {
     title: ""
   };
 
-  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
 
-  onSubmit =(e) => {
-      e.preventDefault();
-      this.props.addTodo(this.state.title)
-      this.setState({ title: '' })
-  }
+  onSubmit = e => {
+    e.preventDefault();
+    this.props.addTodo(this.state.title);
+    this.setState({ title: "" });
+  };
 
   render() {
     return (
@@ -35,5 +36,11 @@ class AddTodo extends Component {
     );
   }
 }
+
+AddTodo.propTypes = {
+  addTodo: PropTypes.func.isRequired,
+  markComplete: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired
+};
 
 export default AddTodo;
